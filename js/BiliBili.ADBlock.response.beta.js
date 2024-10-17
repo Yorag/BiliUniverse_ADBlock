@@ -10839,7 +10839,8 @@ $.log(`⚠ FORMAT: ${FORMAT}`, "");
 															if (typeof blockUpLiveList === 'number') {
 																blockUpLiveList = blockUpLiveList.toString();
 															}
-															if (blockUpLiveList && blockUpLiveList.includes(item?.args?.up_id?.toString())) {
+															if ((typeof blockUpLiveList === 'string' && blockUpLiveList.toLowerCase() == 'all') 
+																	|| (blockUpLiveList && blockUpLiveList.includes(item?.args?.up_id?.toString()))) {
 																$.log(`🎉 屏蔽Up主<${item?.args?.up_name}>直播推广`);
 																await fixPosition().then(result => item = result);//小广告补位
 															}
@@ -10856,6 +10857,9 @@ $.log(`⚠ FORMAT: ${FORMAT}`, "");
 														} else if (cardType === 'cm_double_v9' && cardGoto === 'ad_inline_av') {
 															$.log(`🎉 大视频广告去除`);
 															return undefined; //大广告直接去除
+														} else if (cardType === 'ogv_small_cover' && cardGoto === 'bangumi') {
+															$.log(`🎉 番剧广告去除`);
+															return undefined; //番剧广告直接去除
 														} else if (Goto === 'vertical_av') {
 															switch (Settings?.Detail?.vertical) {
 																case true:
