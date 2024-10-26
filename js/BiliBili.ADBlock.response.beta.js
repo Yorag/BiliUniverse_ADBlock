@@ -10842,6 +10842,7 @@ $.log(`⚠ FORMAT: ${FORMAT}`, "");
 															if ((typeof blockUpLiveList === 'string' && blockUpLiveList.toLowerCase() == 'all') 
 																	|| (blockUpLiveList && blockUpLiveList.includes(item?.args?.up_id?.toString()))) {
 																$.log(`🎉 屏蔽Up主<${item?.args?.up_name}>直播推广`);
+																await fixPosition().then(result => item = result);//小广告补位
 																return undefined;
 															}
 														} else if (cardType === 'cm_v2' && ['ad_player', 'ad_inline_3d', 'ad_inline_eggs', 'ad_inline_live'].includes(cardGoto)) {
