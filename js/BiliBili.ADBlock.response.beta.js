@@ -10842,7 +10842,7 @@ $.log(`⚠ FORMAT: ${FORMAT}`, "");
 															if ((typeof blockUpLiveList === 'string' && blockUpLiveList.toLowerCase() == 'all') 
 																	|| (blockUpLiveList && blockUpLiveList.includes(item?.args?.up_id?.toString()))) {
 																$.log(`🎉 屏蔽Up主<${item?.args?.up_name}>直播推广`);
-																await fixPosition().then(result => item = result);//小广告补位
+																return undefined;
 															}
 														} else if (cardType === 'cm_v2' && ['ad_player', 'ad_inline_3d', 'ad_inline_eggs', 'ad_inline_live'].includes(cardGoto)) {
 															$.log(`🎉 ${cardGoto}广告去除`);
@@ -10859,6 +10859,7 @@ $.log(`⚠ FORMAT: ${FORMAT}`, "");
 															return undefined; //大广告直接去除
 														} else if (cardType === 'ogv_small_cover' && cardGoto === 'bangumi') {
 															$.log(`🎉 番剧广告去除`);
+															await fixPosition().then(result => item = result);//小广告补位
 															return undefined; //番剧广告直接去除
 														} else if (Goto === 'vertical_av') {
 															switch (Settings?.Detail?.vertical) {
@@ -10901,6 +10902,10 @@ $.log(`⚠ FORMAT: ${FORMAT}`, "");
 																			return undefined;
 																		} else if (cardType === 'small_cover_v10' && cardGoto === 'game') {
 																			return undefined;
+																		} else if (cardType === 'small_cover_v9' && cardGoto === 'live') {
+																			return undefined;
+																		// } else if (cardType === 'ogv_small_cover' && cardGoto === 'bangumi') {
+																		// 	return undefined;
 																		} else if (cardType === 'cm_double_v9' && cardGoto === 'ad_inline_av') {
 																			return undefined;
 																		} else if (cardType === 'large_cover_v9' && cardGoto === 'inline_av_v2') {//补位不需要大视频
