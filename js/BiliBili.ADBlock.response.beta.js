@@ -10858,6 +10858,9 @@ $.log(`⚠ FORMAT: ${FORMAT}`, "");
 														} else if (cardType === 'cm_double_v9' && cardGoto === 'ad_inline_av') {
 															$.log(`🎉 大视频广告去除`);
 															return undefined; //大广告直接去除
+														} else if (cardType === 'small_cover_v2' && cardGoto === 'ketang') {
+															$.log(`🎉 课堂广告去除`);
+															return undefined; //大广告直接去除
 														} else if (cardType === 'ogv_small_cover' && cardGoto === 'bangumi') {
 															$.log(`🎉 番剧广告去除`);
 															await fixPosition().then(result => item = result);//小广告补位
